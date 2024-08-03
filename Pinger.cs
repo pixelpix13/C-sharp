@@ -5,19 +5,20 @@ using System.Text;
 namespace ping{
     public class Pinger
     {
-        private Ping pingSender;
-        private PingOptions pingOptions;
-        private string data;
-        private byte[] buffer;
-        private int timeout;
-        private string address;
+        public Ping pingSender {get; set;}
+        public PingOptions pingOptions {get; set;}
+        public string data {get; set;}
+        public byte[] buffer {get; set;}
+        public int timeout {get; set;}
+        public string address {get; set;}
 
         // Constructor
         public Pinger()
         {
             pingSender = new Ping();
-            pingOptions = new PingOptions();
-            pingOptions.DontFragment = true;
+            pingOptions = new PingOptions{
+                DontFragment = true
+            };
 
             data = "hello world";
             buffer = Encoding.ASCII.GetBytes(data);
